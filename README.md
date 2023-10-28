@@ -14,7 +14,7 @@
 - Vinícius Vieira Mesquita - vieiramesquita@gmail.com
 
 ### Version
-- 1.0.5
+- 1.0.6
 
 ### How to use
 
@@ -31,6 +31,6 @@
 
 ### Roadmap
 
-- Implement arguments to choose other zonal reducers (i.e. median, percentile, min, max, variance, etc.)
+- Implement arguments to choose other zonal reducers (i.e. percentile, variance, etc.)
 - Implement arguments to choose other satellite data series (i.e. Landsat series)
 - Implement a visualization of the processed data (or samples of it)
