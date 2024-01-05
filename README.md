@@ -1,4 +1,4 @@
-![Vinícius Mesquita / DALEE - theropod, jurassic landscape, digital art, hight quality](Logo.png)
+![Vinícius Mesquita / DALEE - theropod, jurassic landscape, digital art, hight quality](Logo.jpg)
 
 # 
 
