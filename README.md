@@ -5,20 +5,22 @@
 - ${\color{red}T} im {\color{red}e}\ Se {\color{red}r} ies\ Extracti {\color{red}o} n\ for\ {\color{red}Po} lygonal\ {\color{red}Da} ta$
 
 ### Name
-- T(h)eroPoDa - Time Series Extraction for Polygonal Data ⬛
+- T(h)eroPoDa + - Time Series Extraction for Polygonal Data and Trend Analysis ⬛
 
 ### Description
-- Toolkit created to extract Time Series information from Sentinel 2 🛰 data stored in Earth Engine [![image](https://user-images.githubusercontent.com/13785909/209228496-9fe31adc-a7cb-47c3-b476-64d82541f139.png)](https://earthengine.google.com/)
+- Toolkit created to extract Time Series information from Sentinel 2 🛰 data stored in Earth Engine, gapfilling and trend analysis [![image](https://user-images.githubusercontent.com/13785909/209228496-9fe31adc-a7cb-47c3-b476-64d82541f139.png)](https://earthengine.google.com/)
 
 ### Author
-- Vinícius Vieira Mesquita - vieiramesquita@gmail.com
+- Vinícius Vieira Mesquita - vinicius.mesquita@ufg.br
+### Co-author
+- Leandro Leal Parente - leal.parente@gmail.com
 
 ### Version
-- 1.0.6
+- 1.1.0
 
 ### How to use
 
-- At this version of TheroPoDa (1.0.5), you could extract a series of NDVI data from Sentinel 2 for a Feature Collection of polygons simplily by adjusting some variables at the end of the Google Colab code below:
+- At this version of TheroPoDa (1.1.0), you could extract a series of NDVI data from Sentinel 2 for a Feature Collection of polygons simplily by adjusting some variables at the end of the Google Colab code below:
 
 | variable      | usage                                               | example  |
 |:-------------:|:--------------------------------------------------: |:---------|
