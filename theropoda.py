@@ -490,12 +490,12 @@ def run(asset,id_field,output_name,colab_folder):
 if __name__ == '__main__':
 
   asset = 'users/vieiramesquita/LAPIG_FieldSamples/lapig_goias_fieldwork_2022_50m' #Earth Engine Vector Asset
-  
+  id_field = 'ID_POINTS' #Vector collumn used as ID (use unique identifiers!)
+	
   db = asset.split('/')[-1]
   
-  db_name = db + '.db'
+  db_name = db + '.db'  
   
-  id_field = 'ID_POINTS' #Vector collumn used as ID (use unique identifiers!)
   colab_folder = ''
   output_name = db_name
 
