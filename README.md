@@ -28,9 +28,6 @@
 | id_field      | Vector column used as ID (use unique identifiers!) | ID_POINTS |
 | output_name   | Output filename                                     | LAPIG_Pasture_S2_NDVI_Monitoring_FieldWork.csv |
 
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vieiramesquita/TheroPoDa/blob/main/TheroPoDa.ipynb)
-
 ### Roadmap
 
 - Implement arguments to choose other zonal reducers (i.e. percentile, variance, etc.)
