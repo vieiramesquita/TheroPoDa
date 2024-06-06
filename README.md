@@ -8,12 +8,12 @@
 - T(h)eroPoDa + - Time Series Extraction for Polygonal Data and Trend Analysis ⬛
 
 ### Description
-- Toolkit created to extract Time Series information from Sentinel 2 🛰 data stored in Earth Engine, gapfilling and trend analysis [![image](https://user-images.githubusercontent.com/13785909/209228496-9fe31adc-a7cb-47c3-b476-64d82541f139.png)](https://earthengine.google.com/)
+- Toolkit created to extract Time Series information from Sentinel 2 🛰 data stored in Earth Engine, gap filling and trend analysis [![image](https://user-images.githubusercontent.com/13785909/209228496-9fe31adc-a7cb-47c3-b476-64d82541f139.png)](https://earthengine.google.com/)
 
 ### Author
-- Vinícius Vieira Mesquita - vinicius.mesquita@ufg.br
+- Vinícius Vieira Mesquita - vinicius.mesquita@ufg.br (Main Theropoda)
 ### Co-author
-- Leandro Leal Parente - leal.parente@gmail.com
+- Leandro Leal Parente - leal.parente@gmail.com (Gap Filling and Trend Analysis implementation)
 
 ### Version
 - 1.1.0
@@ -34,5 +34,5 @@
 ### Roadmap
 
 - Implement arguments to choose other zonal reducers (i.e. percentile, variance, etc.)
-- Implement arguments to choose other satellite data series (i.e. Landsat series)
+- Implement arguments to choose other satellite data series (i.e. Landsat series, MODIS products)
 - Implement a visualization of the processed data (or samples of it)
