@@ -1,14 +1,11 @@
-import sys
 import sqlite3
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 
-from pathlib import Path
-from skmap.misc import date_range, ttprint
+from skmap.misc import  ttprint
 from dateutil.relativedelta import relativedelta
-from skmap.io.process import SeasConvFill, WhittakerSmooth
-from skmap import parallel 
+from skmap.io.process import SeasConvFill
 from statsmodels.tsa.seasonal import STL
 
 from loguru import logger
@@ -44,7 +41,8 @@ def extract_ts(df,dt_5days):
 
     #ts_a.append( df_dt['NDVI_median'].mean() )
     #ts_b.append( df_dt[df_dt['Pixel_used'] > 50]['NDVI_median'].mean() )
-    ts.append( df_dt[df_dt['Pixel_used'] >= 70]['NDVI_median'].mean() )
+    #ts.append( df_dt[df_dt['Pixel_used'] >= 70]['NDVI_median'].mean() )
+    ts.append(df_dt[(df_dt['Pixel_used'] >= 70) | (df_dt['NDVI_median'] > 0)]['NDVI_median'].mean())
   
     dates.append((dt2 - relativedelta(days=2)).strftime('%Y-%m-%d'))
     #except:
@@ -165,54 +163,3 @@ def run(input_file, id_pol, dt_5days, season_size,field_id, output_file):
   result.to_parquet(output_file,partition_cols=['id_pol'])
   ttprint(f"Polygon {id_pol} saved in {output_file}")
   return id_pol
-  #except:
-  #  ttprint(f"Polygon {id_pol} FAILED")
-
-# if __name__ == '__main__':
-
-#   # files_list = ['Araticum_ORR','areas_SIR_TNC','Base_PACTO_COALIZAO','BlackJaguar_Areas','EDEN_RESTAURACAO',
-#   #   'EMAS_ORR','ICRAF_AREAS','ICV_restauracao','ippara_cf_dg5_restaurooutros','ippara_cf_dg5_restaurosaf',
-#   #   'ippara_cf_dg5_safantigo','ippara_cf_dg5_safnovo','main_reflorestar_2021_revisado',
-#   #   'mantiqueira_112023_restauracao','MA_PAI_001','MA_PAI_002','mpba_102023_app','mpba_102023_veg',
-#   #   'ORR_Imazon','Pratigi_Pai1_ORR','Pratigi_Pai2_ORR','Restauracao_CEVP','Restauracao_Suzano_r_utf8',
-#   #   'restauramazonia_saf_v06_10_2023','Sare_Sirgas','UEMARousseau']
-  
-#   files_list = ['mpba_102023_app']
-
-#   #files_list = ['mpba_102023_app']
-
-#   for file in files_list:
-
-#     input_file = 'DBS/'+file+'.db'
-#     field_id = 'ID_POL'
-#     start_date, end_date = '2019-01-01', '2024-01-01'
-#     output_file = f'{input_file[:-3]}_trend_analysis.pq'
-
-#     ################################
-#     ## SQLITE access
-#     ################################
-#     ttprint(f"Preparing {input_file}")
-#     con = sqlite3.connect(input_file)
-#     cur = con.cursor()
-#     res = cur.execute(f"CREATE INDEX IF NOT EXISTS restoration_id_pol ON restoration ({field_id})")
-#     con.commit()
-    
-#     ################################
-#     ## Common data structures
-#     ################################
-#     ttprint(f"Preparing polygon ids")
-    
-#     idx_sql = f"SELECT {field_id}, MIN(date) min_date, MAX(date) max_date, COUNT(*) count FROM restoration GROUP BY 1 ORDER BY 1"
-#     idx =  pd.read_sql_query(idx_sql, con=con)
-    
-#     dt_5days = list(date_range(start_date, end_date, date_unit='days', date_step=5, ignore_29feb=True))
-#     season_size = int(len(dt_5days) / 5)
-
-#     #run(input_file, idx.iloc[0][f'{field_id}'],dt_5days,season_size,output_file)
-#     #run(input_file, 8389,dt_5days,season_size,output_file)
-
-#     args = [ (input_file, r[f'{field_id}'], dt_5days, season_size, output_file) for _, r in idx.iterrows() ]
-    
-#     ttprint(f"Starting trend analysis on {len(args)} polygons")
-#     for id_pol in parallel.job(run, args, joblib_args={'backend': 'multiprocessing'}):
-#      continue
