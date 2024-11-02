@@ -135,7 +135,7 @@ def getTimeSeries(geometry,bestEffort=False):
     mask_exp = "(b('QA_PIXEL') == 5440 || b('QA_PIXEL') == 5504)"
     cloud_mask = img.expression(mask_exp).add(img.gt(0)).select([0],['QA']);
     
-    red_nir_selection = img.select(['SR_B4','SR_B3'],['RED','NIR']).multiply(0.0000275).add(-0.2)
+    red_nir_selection = img.select(['SR_B5','SR_B4'],['RED','NIR']).multiply(0.0000275).add(-0.2)
     
     #Calculate NDVI (Normalized Difference Vegetation Index) based on Bands 4 (Red) and 8 (Near Infrared)
     ndvi = red_nir_selection.updateMask(cloud_mask).normalizedDifference(['RED','NIR']).select([0],['NDVI'])
@@ -226,10 +226,10 @@ def getTimeSeries(geometry,bestEffort=False):
     """
     return ee.Feature(feat).toDictionary()
 
-  #Calls the Sentinel 2 data collection, filter the images based in the polygon location, masks cloud/shadow and calculates NDVI
-  imgCol = (ee.ImageCollection("LANDSAT/LT05/C02/T1_L2")
+  #Calls the data collection, filter the images based in the polygon location, masks cloud/shadow and calculates NDVI
+  imgCol = (ee.ImageCollection("LANDSAT/LC08/C02/T1_L2")
     .filterBounds(ee.Feature(geometry).geometry())
-    .filterDate('1996-01-01','2009-01-01')
+    .filterDate('2010-01-01','2024-01-01')
     .map(mask_and_ndvi))
 
   #Extracts NDVI time series by polygon, remove the nulls and build a dictionary struture to the data
