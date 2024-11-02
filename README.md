@@ -44,7 +44,7 @@ If you don't know how to upload your vector data in Earth Engine, you can follow
 
 #### Command line example
 ```bash
-python main.py --asset users/vieiramesquita/LAPIG_FieldSamples/lapig_goias_fieldwork_2022_50m --id_field ID_POINTS --output_name LAPIG_Pasture_S2_NDVI_Monitoring_FieldWork
+python main.py --asset projects/ee-vieiramesquita/assets/SEAPA_GO/CAR_GO_NoDesmat_simplified --id_field _uid0_ --output_name CAR_GO_NoDesmat_simplified
 ```
 ### Roadmap
 
