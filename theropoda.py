@@ -182,8 +182,11 @@ def getTimeSeries(geometry,bestEffort=False):
     
     #logger.info(orgDate.split('-')[0])
     
+    year = ee.Algorithms.If(ee.Number.parse(orgDate.split('-').get(0)).lte(2023), ee.Number.parse(orgDate.split('-').get(0)),2023)
+    
     pasture_mapBiomas = (ee.Image('projects/mapbiomas-public/assets/brazil/lulc/collection9/mapbiomas_collection90_integration_v1')
-                         .select(ee.String('classification_').cat(orgDate.split('-').get(0)))
+                         #.select(ee.String('classification_').cat(orgDate.split('-').get(0)))
+                         .select(ee.String('classification_').cat(ee.Number(year).toInt().format()))
                          .eq(15)
                          .clip(ee.Feature(geometry).geometry()))
     
