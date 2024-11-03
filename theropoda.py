@@ -229,7 +229,7 @@ def getTimeSeries(geometry,bestEffort=False):
   #Calls the data collection, filter the images based in the polygon location, masks cloud/shadow and calculates NDVI
   imgCol = (ee.ImageCollection("LANDSAT/LC08/C02/T1_L2")
     .filterBounds(ee.Feature(geometry).geometry())
-    .filterDate('2010-01-01','2024-01-01')
+    .filterDate('2013-01-01','2025-01-01')
     .map(mask_and_ndvi))
 
   #Extracts NDVI time series by polygon, remove the nulls and build a dictionary struture to the data
