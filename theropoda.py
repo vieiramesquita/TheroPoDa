@@ -489,7 +489,7 @@ def run(asset,id_field,output_name,colab_folder,db):
   ]
 
   #Number of to use (more than 20 generate many sleeping queries)
-  n_cores = 12 #Recommended
+  n_cores = 10 #Recommended
 
   #Starts the parallel processing
   infos = Parallel(n_jobs=n_cores, backend='multiprocessing')(delayed(build_time_series_check)(*args) for args in worker_args)
