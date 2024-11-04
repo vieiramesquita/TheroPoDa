@@ -42,7 +42,7 @@ def extract_ts(df,dt_5days):
     #ts_a.append( df_dt['NDVI_median'].mean() )
     #ts_b.append( df_dt[df_dt['Pixel_used'] > 50]['NDVI_median'].mean() )
     #ts.append( df_dt[df_dt['Pixel_used'] >= 70]['NDVI_median'].mean() )
-    ts.append(df_dt[(df_dt['Pixel_used'] >= 70) | (df_dt['NDVI_median'] > 0)]['NDVI_median'].mean())
+    ts.append(df_dt[(df_dt['Pixel_used'] >= 70) & (df_dt['NDVI_median'] > 0)]['NDVI_median'].mean())
   
     dates.append((dt2 - relativedelta(days=8)).strftime('%Y-%m-%d'))
     #except:
