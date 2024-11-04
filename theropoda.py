@@ -196,7 +196,8 @@ def getTimeSeries(geometry,bestEffort=False):
                          .eq(15)
                          .selfMask()
                          .clip(ee.Feature(geometry).geometry())
-    )                         
+    )
+                         
     
     series = img.updateMask(pasture_mapBiomas).reduceRegion(reducers,ee.Feature(geometry).geometry(), pixel_size,None,None,False,1e13,16)
     #series = img.reduceRegion(reducers,ee.Feature(geometry).geometry(), pixel_size,None,None,False,1e13,16)
@@ -354,8 +355,8 @@ def build_time_series_check(index,obj,id_field,outfile,asset,checker=False):
 
     #df_check = pd.read_sql(outfile)
     try:
-      df_check_list = pd.read_sql_query("SELECT DISTINCT ID_POL FROM restoration", conn)
-      df_check_list = list(df_check_list['ID_POL'])
+      df_check_list = pd.read_sql_query(f"SELECT DISTINCT {id_field} FROM restoration", conn)
+      df_check_list = list(df_check_list[id_field])
     except:
       df_check_list = []
 

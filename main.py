@@ -37,7 +37,7 @@ if __name__ == '__main__':
    build_id_list(asset,id_field,colab_folder,output_name)
 
   theropoda_run(asset,id_field,output_name,colab_folder,db)
-
+  
   start_date_trend, end_date_trend= '1997-01-01', '2008-01-01'
   output_file_trends = f'{output_name}_trend_analysis.pq'
 
