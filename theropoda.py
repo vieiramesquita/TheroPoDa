@@ -191,13 +191,13 @@ def getTimeSeries(geometry,bestEffort=False):
              'classification_2004','classification_2005','classification_2006','classification_2007']
 
     pasture_mapBiomas = (ee.Image('projects/mapbiomas-public/assets/brazil/lulc/collection9/mapbiomas_collection90_integration_v1')
-                        .select(bands)
-                         .reduce(ee.Reducer.mode())
-                         .eq(15)
-                         .selfMask()
-                         .clip(ee.Feature(geometry).geometry())
-    )
-                         
+                      .select(bands)
+                      .eq(15)
+                      .selfMask()
+                      .reduce(ee.Reducer.count())
+                      .eq(11)
+                      .selfMask()
+    )                        
     
     series = img.updateMask(pasture_mapBiomas).reduceRegion(reducers,ee.Feature(geometry).geometry(), pixel_size,None,None,False,1e13,16)
     #series = img.reduceRegion(reducers,ee.Feature(geometry).geometry(), pixel_size,None,None,False,1e13,16)
