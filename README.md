@@ -27,6 +27,7 @@
 - Scikit-learn
 - Joblib
 - Psutil
+- pyarrow
 - [scikit-map](https://github.com/openlandmap/scikit-map)
 - [Earthengine-api](https://developers.google.com/earth-engine/guides/python_install)
 
