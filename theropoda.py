@@ -182,22 +182,22 @@ def getTimeSeries(geometry,bestEffort=False):
     
     #logger.info(orgDate.split('-')[0])
     
-    # pasture_mapBiomas = (ee.Image('projects/mapbiomas-public/assets/brazil/lulc/collection9/mapbiomas_collection90_integration_v1')
-    #                      .select(ee.String('classification_').cat(orgDate.split('-').get(0)))
-    #                      .eq(15)
-    #                      .clip(ee.Feature(geometry).geometry()))
-
-    bands = ['classification_1997','classification_1998','classification_1999','classification_2000','classification_2001','classification_2002','classification_2003',
-             'classification_2004','classification_2005','classification_2006','classification_2007']
-
     pasture_mapBiomas = (ee.Image('projects/mapbiomas-public/assets/brazil/lulc/collection9/mapbiomas_collection90_integration_v1')
-                      .select(bands)
-                      .eq(15)
-                      .selfMask()
-                      .reduce(ee.Reducer.count())
-                      .eq(11)
-                      .selfMask()
-    )                        
+                         .select(ee.String('classification_').cat(orgDate.split('-').get(0)))
+                         .eq(15)
+                         .clip(ee.Feature(geometry).geometry()))
+
+    # bands = ['classification_1997','classification_1998','classification_1999','classification_2000','classification_2001','classification_2002','classification_2003',
+    #          'classification_2004','classification_2005','classification_2006','classification_2007']
+
+    # pasture_mapBiomas = (ee.Image('projects/mapbiomas-public/assets/brazil/lulc/collection9/mapbiomas_collection90_integration_v1')
+    #                   .select(bands)
+    #                   .eq(15)
+    #                   .selfMask()
+    #                   .reduce(ee.Reducer.count())
+    #                   .eq(11)
+    #                   .selfMask()
+    # )                        
     
     series = img.updateMask(pasture_mapBiomas).reduceRegion(reducers,ee.Feature(geometry).geometry(), pixel_size,None,None,False,1e13,16)
     #series = img.reduceRegion(reducers,ee.Feature(geometry).geometry(), pixel_size,None,None,False,1e13,16)
